@@ -1,19 +1,13 @@
-
+import Player from './components/Player'
 function App() {
   
 
   return (
     <main>
       <div id="game-container">
-        <ol id="players">
-          <li >
-            <span className="player-name">Player 1</span>
-            <span className="player-symbol">x</span>
-          </li>
-          <li >
-            <span className="player-name">Player 2</span>
-            <span className="player-symbol">o</span>
-          </li>
+        <ol id="players" >
+          <Player initialName="Player 1" playerSymbol="x" />
+          <Player initialName="Player 2" playerSymbol="o" />
         </ol>
 
         Game
@@ -23,4 +17,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
