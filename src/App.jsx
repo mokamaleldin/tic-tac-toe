@@ -5,6 +5,11 @@ import Log from './components/Log'
 import { WINNING_COMBINATIONS } from './winningCombinations'
 import GameOver from './components/GameOver'
 
+const PLAYERS = {
+  X: 'Player 1',
+  O: 'Player 2'
+}
+
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
@@ -21,13 +26,7 @@ function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
-function App() {
-  const [playername, setPlayername] = useState({
-    X: 'Player 1', O: 'Player 2'
-  });
-  const [gameState, setGameState] = useState([]);
-  const activePlayer = deriveActivePlayer(gameState);
-
+function deriveGameBoard(gameState) {
   let gameBoard = [...initialGameBoard.map(array => [...array])];
   for (const turn of gameState) {
     const { square, player } = turn;
@@ -35,8 +34,31 @@ function App() {
 
     gameBoard[row][col] = player;
   }
+  return gameBoard;
+}
 
+function deriveWinner(gameBoard, playername) {
   let winner;
+
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstSquare = gameBoard[combination[0].row][combination[0].column];
+    const secondSquare = gameBoard[combination[1].row][combination[1].column];
+    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
+
+    if (firstSquare && firstSquare === secondSquare && firstSquare === thirdSquare) {
+      winner = playername[firstSquare];
+    }
+  }
+  return winner;
+}
+
+function App() {
+  const [playername, setPlayername] = useState(PLAYERS);
+  const [gameState, setGameState] = useState([]);
+  const activePlayer = deriveActivePlayer(gameState);
+
+
+  const gameBoard = deriveGameBoard(gameState);
   const hasDraw = gameState.length === 9 && !winner;
 
 
@@ -64,23 +86,16 @@ function App() {
     });
   }
 
-  for (const combination of WINNING_COMBINATIONS) {
-    const firstSquare = gameBoard[combination[0].row][combination[0].column];
-    const secondSquare = gameBoard[combination[1].row][combination[1].column];
-    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
+  const winner = deriveWinner(gameBoard, playername);
 
-    if (firstSquare && firstSquare === secondSquare && firstSquare === thirdSquare) {
-      winner = playername[firstSquare];
-    }
-  }
-
+ 
 
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName="Player 1" playerSymbol="X" isActive={ activePlayer === "X" } onChangeName={ handlePlayerNameChange } />
-          <Player initialName="Player 2" playerSymbol="O" isActive={ activePlayer === "O" } onChangeName={ handlePlayerNameChange } />
+          <Player initialName={ PLAYERS.X } playerSymbol="X" isActive={ activePlayer === "X" } onChangeName={ handlePlayerNameChange } />
+          <Player initialName={ PLAYERS.O } playerSymbol="O" isActive={ activePlayer === "O" } onChangeName={ handlePlayerNameChange } />
         </ol>
         { (winner || hasDraw) && <GameOver onRestart={ handleRestart } winner={ winner } /> }
         <GameBoard onSelectSquare={ handleSelectSquare } board={ gameBoard } />
