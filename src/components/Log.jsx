@@ -1,3 +1,4 @@
+// the log text that shows the moves made by the players
 export default function Log({ turns }) {
     return (
         <ol id='log'>

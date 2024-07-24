@@ -1,10 +1,11 @@
+// the game board it show the game board and the player can click on the square to make a move
 const initialGameBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
 ]
 export default function GameBoard({ onSelectSquare, turns }) {
-
+    
     let gameBoard = initialGameBoard;
     for (const turn of turns) {
         const { square, player } = turn;
