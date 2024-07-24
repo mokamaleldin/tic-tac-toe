@@ -1,19 +1,16 @@
-import { useState } from 'react'
 const initialGameBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
 ]
-export default function GameBoard() {
+export default function GameBoard({ onSelectSquare, turns }) {
 
-    const [gameBoard, setGameBoard] = useState(initialGameBoard);
+    let gameBoard = initialGameBoard;
+    for (const turn of turns) {
+        const { square, player } = turn;
+        const { row, col } = square;
 
-    function hadeleSelectSquare(rowIndex, colIndex) {
-        setGameBoard((prevGameBoard) => {
-            const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-            updatedBoard[rowIndex][colIndex] = 'x';
-            return updatedBoard;
-        })
+        gameBoard[row][col] = player;
     }
 
     return (
@@ -23,7 +20,7 @@ export default function GameBoard() {
                     <ol>
                         { row.map((playerSymbol, colIndex) => (
                             <li key={ colIndex }>
-                                <button onClick={ () => hadeleSelectSquare(rowIndex, colIndex) }>{ playerSymbol }</button>
+                                <button onClick={ () => onSelectSquare(rowIndex, colIndex) }>{ playerSymbol }</button>
                             </li>
                         )) }
                     </ol>
