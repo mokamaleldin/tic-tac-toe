@@ -36,18 +36,9 @@ function App() {
     gameBoard[row][col] = player;
   }
 
-  let winner = null;
+  let winner;
   const hasDraw = gameState.length === 9 && !winner;
 
-  for (const combination of WINNING_COMBINATIONS) {
-    const firstSquare = gameBoard[combination[0].row][combination[0].column];
-    const secondSquare = gameBoard[combination[1].row][combination[1].column];
-    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
-
-    if (firstSquare && firstSquare === secondSquare && firstSquare === thirdSquare) {
-      winner = firstSquare;
-    }
-  }
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameState((prevTurns) => {
@@ -64,14 +55,32 @@ function App() {
     setGameState([]);
   }
 
-  function hand 
+  function handlePlayerNameChange(playerSymbol, newName) {
+    setPlayername(prevPlayers => {
+      return {
+        ...prevPlayers,
+        [playerSymbol]: newName
+      }
+    });
+  }
+
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstSquare = gameBoard[combination[0].row][combination[0].column];
+    const secondSquare = gameBoard[combination[1].row][combination[1].column];
+    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
+
+    if (firstSquare && firstSquare === secondSquare && firstSquare === thirdSquare) {
+      winner = playername[firstSquare];
+    }
+  }
+
 
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName="Player 1" playerSymbol="X" isActive={ activePlayer === "X" } />
-          <Player initialName="Player 2" playerSymbol="O" isActive={ activePlayer === "O" } />
+          <Player initialName="Player 1" playerSymbol="X" isActive={ activePlayer === "X" } onChangeName={ handlePlayerNameChange } />
+          <Player initialName="Player 2" playerSymbol="O" isActive={ activePlayer === "O" } onChangeName={ handlePlayerNameChange } />
         </ol>
         { (winner || hasDraw) && <GameOver onRestart={ handleRestart } winner={ winner } /> }
         <GameBoard onSelectSquare={ handleSelectSquare } board={ gameBoard } />
