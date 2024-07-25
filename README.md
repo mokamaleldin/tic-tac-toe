@@ -4,40 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic-Tac-Toe Game</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 20px;
-      color: #333;
-    }
-    h1, h2, h3 {
-      color: #0056b3;
-    }
-    code {
-      background: #f4f4f4;
-      padding: 2px 5px;
-      border-radius: 3px;
-    }
-    pre {
-      background: #f4f4f4;
-      padding: 10px;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    ul li::before {
-      content: "•";
-      color: #0056b3;
-      font-weight: bold;
-      display: inline-block; 
-      width: 1em;
-      margin-left: -1em;
-    }
-  </style>
 </head>
 <body>
 
