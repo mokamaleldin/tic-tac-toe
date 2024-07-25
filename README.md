@@ -27,7 +27,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/tic-tac-toe.git
+git clone https://github.com/mokamaleldin/tic-tac-toe.git
 cd tic-tac-toe
 Install dependencies:
 
