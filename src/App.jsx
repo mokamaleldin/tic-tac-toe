@@ -71,7 +71,7 @@ function App() {
 
       return updateTurns;
     });
-  }
+  };
 
   function handleRestart() {
     setGameState([]);
@@ -87,7 +87,7 @@ function App() {
   }
 
 
- 
+
 
   return (
     <main>
