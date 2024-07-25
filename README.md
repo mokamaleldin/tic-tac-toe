@@ -110,7 +110,7 @@ cd tic-tac-toe</code></pre>
 
 <h2 id="contact">Contact</h2>
 <ul>
-  <li><strong>Your Name:</strong> <a href="mohamed.kamal.eliwa@example.com">youremail@example.com</a></li>
+  <li><strong>Your Name:</strong> <a href="mohamed.kamal.eliwa@gmail.com">mohamed.kamal.eliwa@gmail.com</a></li>
   <li><strong>Project Link:</strong> <a href="https://github.com/mokamaleldin/tic-tac-toe" target="_blank">https://github.com/mokamaleldin/tic-tac-toe</a></li>
 </ul>
 
