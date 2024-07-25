@@ -38,7 +38,7 @@ function deriveGameBoard(gameState) {
 }
 
 function deriveWinner(gameBoard, playername) {
-  let winner;
+  let winner = null;
 
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquare = gameBoard[combination[0].row][combination[0].column];
@@ -56,9 +56,9 @@ function App() {
   const [playername, setPlayername] = useState(PLAYERS);
   const [gameState, setGameState] = useState([]);
   const activePlayer = deriveActivePlayer(gameState);
-
-
   const gameBoard = deriveGameBoard(gameState);
+  const winner = deriveWinner(gameBoard, playername);
+
   const hasDraw = gameState.length === 9 && !winner;
 
 
@@ -86,7 +86,6 @@ function App() {
     });
   }
 
-  const winner = deriveWinner(gameBoard, playername);
 
  
 
