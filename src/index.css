@@ -354,58 +354,43 @@ ol {
 /* Mobile Styles */
 @media (max-width: 600px) {
   #game-board button {
-    width: 4rem; /* Reduced size for mobile */
-    height: 4rem;
-    font-size: 2rem; /* Smaller font size for mobile */
-  }
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  background: #aca788;
+  color: #3f3b00;
+  font-size: 2rem;
+  cursor: pointer;
+  font-family: 'Caprasimo', cursive;
+  padding: 1rem;
+}
 
-  #players {
-    flex-direction: column; /* Stack players vertically on small screens */
-    gap: 1rem; /* Reduce gap between players */
-  }
+body {
+  background: radial-gradient(
+      circle at top,
+      rgba(241, 210, 70, 0.98),
+      rgba(250, 176, 103, 0.87)
+    ),
+    url('bg-pattern-dark.png');
+  background-repeat: repeat;
+  background-size: 100% 100%, 30% 30%, 100% 100%;
+  min-height: 50rem;
+}
 
-  #players li {
-    width: 100%; /* Full width for each player item */
-  }
+#players {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
 
-  h1 {
-    font-size: 2rem; /* Smaller font size for headings on mobile */
-  }
-
-  #game-container {
-    max-width: 90%; /* Increase width for mobile screens */
-    padding: 1rem; /* Reduce padding */
-  }
-
-  #players button {
-    width: 2.5rem; /* Smaller buttons for mobile */
-    font-size: 0.8rem;
-  }
-
-  #game-board ol {
-    gap: 1rem; /* Reduce gap between items in the game board */
-  }
-
-  #game-board button {
-    width: 6rem; /* Smaller game board buttons */
-    height: 6rem;
-    font-size: 3rem; /* Adjust font size for smaller buttons */
-  }
-
-  #game-over h2 {
-    font-size: 2.5rem; /* Smaller heading size in game over screen */
-  }
-
-  #game-over p {
-    font-size: 1.5rem; /* Smaller text size in game over screen */
-  }
-
-  #game-over button {
-    font-size: 1.2rem; /* Smaller button size */
-  }
-
-  /* Ensure background and other elements fit well on mobile */
-  body {
-    min-height: 100vh; /* Ensure full viewport height */
-  }
+#players li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 2px solid transparent;
+}
 }
