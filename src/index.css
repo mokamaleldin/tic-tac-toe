@@ -349,3 +349,48 @@ ol {
     transform: scale(1);
   }
 }
+
+/* Mobile Styles */
+/* Mobile Styles */
+@media (max-width: 600px) {
+#game-board button {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  background: #aca788;
+  color: #3f3b00;
+  font-size: 2rem;
+  cursor: pointer;
+  font-family: 'Caprasimo', cursive;
+  padding: 1rem;
+}
+
+body {
+  background: radial-gradient(
+      circle at top,
+      rgba(241, 210, 70, 0.98),
+      rgba(250, 176, 103, 0.87)
+    ),
+    url('bg-pattern-dark.png');
+  background-repeat: repeat;
+  background-size: 100% 100%, 30% 30%, 100% 100%;
+  min-height: 50rem;
+}
+
+#players {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+#players li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 2px solid transparent;
+}
+}

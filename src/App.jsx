@@ -86,9 +86,6 @@ function App() {
     });
   }
 
-
-
-
   return (
     <main>
       <div id="game-container">
